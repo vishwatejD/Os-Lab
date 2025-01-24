@@ -466,7 +466,7 @@ Combine commands or redirect output to/from files.
 ### **Piping**
 | Command                | Description                               | Example                       | Result                         |
 |-------------------------|-------------------------------------------|-------------------------------|--------------------------------|
-| `|` (pipe)             | Sends output of one command to another   | `ls -la /usr/bin | less`     | Paged view of `ls` output      |
+| `\|` (pipe)             | Sends output of one command to another   | `ls -la /usr/bin \| less`     | Paged view of `ls` output      |
 
 ### **Redirection**
 | Command                | Description                               | Example                       | Result                         |
