@@ -22,6 +22,8 @@
 | `&&`   | Command separator. Runs the next command only if the previous succeeds.                    |
 | `&`    | Executes a command in the background. Example: `find / -name core > file.txt &`.           |
 
+# QUESTION 1
+
 # Job Control in Linux
 
 ## `&` (Background Execution)
@@ -476,3 +478,198 @@ Combine commands or redirect output to/from files.
 
 ---
 
+# QUESTION 2 
+
+# `cat`
+`cat` (concatenate) is used to display file contents, create new files, and append data to existing files.
+
+### Usage:
+1. **Create a new file**:
+   ```bash
+   cat > file.txt
+   ```
+   Type the content and press `Ctrl+D` to save.
+
+2. **Append to an existing file**:
+   ```bash
+   cat >> file.txt
+   ```
+   Adds new content to the end of the file.
+
+3. **Example**:
+   ```bash
+   echo "First Line" > file1.txt    # Create a file
+   cat >> file1.txt                # Append to the file
+   # Type additional lines and press Ctrl+D to save.
+   ```
+
+---
+
+## `head` and `tail`
+These commands display the beginning (`head`) or end (`tail`) of a file.
+
+### Options:
+
+### `head`
+- **`-n <lines>`**: Show the first `<lines>` lines.
+  ```bash
+  head -n 5 file.txt
+  ```
+- **`-c <bytes>`**: Show the first `<bytes>` bytes.
+  ```bash
+  head -c 10 file.txt
+  ```
+
+### `tail`
+- **`-n <lines>`**: Show the last `<lines>` lines.
+  ```bash
+  tail -n 5 file.txt
+  ```
+- **`-c <bytes>`**: Show the last `<bytes>` bytes.
+  ```bash
+  tail -c 20 file.txt
+  ```
+
+---
+
+## `cp`
+`cp` is used to copy files or directories.
+
+### Options:
+- **`-n`**: Do not overwrite an existing file.
+  ```bash
+  cp -n source.txt destination.txt
+  ```
+- **`-i`**: Prompt before overwriting.
+  ```bash
+  cp -i source.txt destination.txt
+  ```
+- **`-f`**: Force overwriting without confirmation.
+  ```bash
+  cp -f source.txt destination.txt
+  ```
+
+---
+
+## `mv`
+`mv` is used to move or rename files and directories.
+
+### Options:
+- **`-f`**: Force move, overwriting without confirmation.
+  ```bash
+  mv -f file1.txt newname.txt
+  ```
+- **`-i`**: Prompt before overwriting.
+  ```bash
+  mv -i file1.txt newname.txt
+  ```
+
+### Examples:
+- **Move directory**:
+  ```bash
+  mv dir1 dir2  # Moves dir1 into dir2 if dir2 exists.
+  ```
+- **Move multiple files to a directory**:
+  ```bash
+  mv file1 file2 file3 destination_dir/
+  ```
+
+---
+
+## `rm`
+`rm` is used to delete files and directories.
+
+### Options:
+- **`-r`**: Recursively delete directories and their contents.
+  ```bash
+  rm -r dir1
+  ```
+- **`-i`**: Prompt before every removal.
+  ```bash
+  rm -i file.txt
+  ```
+- **`-f`**: Force deletion without prompt.
+  ```bash
+  rm -f file.txt
+  ```
+
+---
+
+## `rmdir`
+`rmdir` is used to remove empty directories.
+
+### Options:
+- **`-r`**: Remove directories recursively (use `rm` for this).
+- **`-f`**: Force removal (also use `rm` for this).
+
+### Example:
+```bash
+rmdir empty_dir
+rmdir dir1 dir2    # Removes multiple empty directories.
+```
+
+---
+
+## `find`
+`find` searches for files and directories.
+
+### Options:
+- **`-name <pattern>`**: Find files by name.
+  ```bash
+  find /path/to/search -name "*.txt"
+  ```
+- **`-type <type>`**: Search by type (`f` for files, `d` for directories).
+  ```bash
+  find /path/to/search -type f
+  ```
+
+---
+
+# QUESTION 3
+
+### **a. has the extension .txt.**
+
+To list all the files with the extension `.txt` we can use the command
+```bash
+ls *.txt
+```
+or recursively
+```bash
+ls -R *.txt
+```
+but the above commands only search in the current working directory. There are alternative which also searches in sub directories is
+```bash
+find . -name "*.txt"
+```
+
+###  **b. containing atleast one digit.**
+
+
+To list all files that contain at least one digit in their name we can use the following commands
+```bash
+ls *[0-9]*
+```
+or
+```bash
+find . -name "*[0-9]*"
+```
+
+### c. having minimum length of 4.
+We use the command
+```bash
+ls | awk 'length($0) >=4'
+```
+Here, we send the output of ls command to the text processing tool called awk along with the required length condition.
+
+### **d. does not contain any of the vowels as the start letter.**
+
+We can use any of these commands
+
+```bash
+ls ^[^aeiouAEIOU]
+```
+or
+
+```bash
+ls | grep -i "^[^aeiou]"
+```
