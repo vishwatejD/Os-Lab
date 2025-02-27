@@ -33,7 +33,7 @@ void calculateTimes(struct Process processes[], int n) {
     printf("\nAvg Turnaround Time: %.2f\n", (float)total_tat / n);
 }
 
-// **Preemptive SJF Scheduling (Fixed)**
+
 void preemptiveSJF(struct Process processes[], int n) {
     int remaining_bt[MAX], total_time = 0, completed = 0;
     int shortest, min_bt;
@@ -74,7 +74,7 @@ void preemptiveSJF(struct Process processes[], int n) {
     calculateTimes(processes, n);
 }
 
-// **Round Robin Scheduling**
+
 void roundRobin(struct Process processes[], int n, int quantum) {
     int total_time = 0, completed = 0;
     int remaining_bt[MAX];
@@ -103,7 +103,7 @@ void roundRobin(struct Process processes[], int n, int quantum) {
     calculateTimes(processes, n);
 }
 
-// **Non-Preemptive Priority Scheduling (Fixed)**
+
 void priorityScheduling(struct Process processes[], int n) {
     int total_time = 0, completed = 0;
     int is_completed[MAX] = {0};
@@ -135,7 +135,7 @@ void priorityScheduling(struct Process processes[], int n) {
     calculateTimes(processes, n);
 }
 
-// **Main Function (Fixed)**
+
 int main() {
     int n, choice, quantum;
     struct Process processes[MAX];
